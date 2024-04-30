@@ -1,5 +1,6 @@
 package com.rookie.stack.cli;
 
+import com.rookie.stack.cli.command.CommandExecutor;
 import com.rookie.stack.cli.generator.StaticGenerator;
 
 import java.io.File;
@@ -11,16 +12,9 @@ import java.io.File;
  */
 public class Main {
     public static void main(String[] args) {
-        // 获取整个项目的跟路径
-        String projectPath = System.getProperty("user.dir");
-        // System.out.println(projectPath);
-        File parentFile = new File(projectPath).getParentFile();
-
-        String inputPath = new File(parentFile, "acm-template").getAbsolutePath();
-        String outputPath = projectPath;
-
-        StaticGenerator.copyFilesByHutool(inputPath,outputPath);
-
-
+        // args = new String[]{"generate", "-l", "-a", "-o"};
+        // args = new String[]{"config"};
+        CommandExecutor commandExecutor = new CommandExecutor();
+        commandExecutor.doExecute(args);
     }
 }
