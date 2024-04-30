@@ -1,8 +1,7 @@
 package com.rookie.stack.cli.command.command;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.rookie.stack.cli.generator.MainGenerator;
-import com.rookie.stack.cli.model.MainTemplateConfig;
+import com.rookie.stack.cli.generator.file.MainGenerator;
 import picocli.CommandLine;
 
 import java.util.concurrent.Callable;
@@ -26,10 +25,10 @@ public class GenerateCommand implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        MainTemplateConfig mainTemplateConfig = new MainTemplateConfig();
-        BeanUtil.copyProperties(this, mainTemplateConfig);
-        System.out.println("配置信息：" + mainTemplateConfig);
-        MainGenerator.doGenerate(mainTemplateConfig);
+//        MainTemplateConfig mainTemplateConfig = new MainTemplateConfig();
+//        BeanUtil.copyProperties(this, mainTemplateConfig);
+//        System.out.println("配置信息：" + mainTemplateConfig);
+//        MainGenerator.doGenerate(mainTemplateConfig);
         return 0;
     }
 }

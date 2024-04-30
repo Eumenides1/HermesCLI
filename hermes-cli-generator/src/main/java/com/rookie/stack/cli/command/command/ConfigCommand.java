@@ -1,7 +1,6 @@
 package com.rookie.stack.cli.command.command;
 
 import cn.hutool.core.util.ReflectUtil;
-import com.rookie.stack.cli.model.MainTemplateConfig;
 import picocli.CommandLine;
 
 import java.lang.reflect.Field;
@@ -23,14 +22,14 @@ public class ConfigCommand implements Runnable {
 //        // 获取类的所有字段
 //        Field[] fields = myClass.getDeclaredFields();
 
-        Field[] fields = ReflectUtil.getFields(MainTemplateConfig.class);
-
-        // 遍历并打印每个字段的信息
-        for (Field field : fields) {
-            System.out.println("字段名称：" + field.getName());
-            System.out.println("字段类型：" + field.getType());
-//            System.out.println("Modifiers: " + java.lang.reflect.Modifier.toString(field.getModifiers()));
-            System.out.println("---");
-        }
+//        Field[] fields = ReflectUtil.getFields(MainTemplateConfig.class);
+//
+//        // 遍历并打印每个字段的信息
+//        for (Field field : fields) {
+//            System.out.println("字段名称：" + field.getName());
+//            System.out.println("字段类型：" + field.getType());
+////            System.out.println("Modifiers: " + java.lang.reflect.Modifier.toString(field.getModifiers()));
+//            System.out.println("---");
+//        }
     }
 }

@@ -1,9 +1,6 @@
 package com.rookie.stack.cli;
 
 import com.rookie.stack.cli.command.CommandExecutor;
-import com.rookie.stack.cli.generator.StaticGenerator;
-
-import java.io.File;
 
 /**
  * @author eumenides
