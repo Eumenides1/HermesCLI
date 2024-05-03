@@ -6,8 +6,9 @@
   "author": "jaguarliu",
   "createTime": "2023-11-22",
   "fileConfig": {
-    "inputRootPath": "/Users/eumenides/Desktop/core/HermesCLI/acm-template",
+    "inputRootPath": ".source/acm-template",
     "outputRootPath": "generated",
+    "sourceRootPath": "/Users/eumenides/Desktop/core/HermesCLI/acm-template",
     "type": "dir",
     "files": [
       {

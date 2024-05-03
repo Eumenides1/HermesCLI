@@ -1,6 +1,10 @@
 package com.rookie.stack.cli;
 
 import com.rookie.stack.cli.command.CommandExecutor;
+import com.rookie.stack.cli.generator.main.MainGenerator;
+import freemarker.template.TemplateException;
+
+import java.io.IOException;
 
 /**
  * @author eumenides
@@ -8,10 +12,11 @@ import com.rookie.stack.cli.command.CommandExecutor;
  * @date 2024/4/30
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws TemplateException, IOException, InterruptedException {
         // args = new String[]{"generate", "-l", "-a", "-o"};
         // args = new String[]{"config"};
-        CommandExecutor commandExecutor = new CommandExecutor();
-        commandExecutor.doExecute(args);
+        MainGenerator mainGenerator = new MainGenerator();
+        mainGenerator.
+                doGenerate();
     }
 }
