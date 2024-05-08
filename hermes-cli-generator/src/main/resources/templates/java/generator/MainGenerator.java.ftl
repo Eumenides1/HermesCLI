@@ -1,6 +1,6 @@
 package ${basePackage}.generator;
 
-import com.rookie.stack.model.DataModel;
+import ${basePackage}.model.DataModel;
 import freemarker.template.TemplateException;
 
 import java.io.File;
@@ -18,23 +18,40 @@ public class MainGenerator {
      * @throws TemplateException
      * @throws IOException
      */
-    public static void doGenerate(Object model) throws TemplateException, IOException {
+    public static void doGenerate(DataModel model) throws TemplateException, IOException {
         String inputRootPath = "${fileConfig.inputRootPath}";
         String outputRootPath = "${fileConfig.outputRootPath}";
 
         String inputPath;
         String outputPath;
-<#list fileConfig.files as fileInfo>
-
-    <#if fileInfo.type == "static">
-                inputPath = new File(inputRootPath, "${fileInfo.inputPath}").getAbsolutePath();
+    <#-- 获取模型变量 -->
+    <#list modelConfig.models as modelInfo>
+        ${modelInfo.type} ${modelInfo.fieldName} = model.${modelInfo.fieldName};
+    </#list>
+    <#list fileConfig.files as fileInfo>
+        <#if fileInfo.condition??>
+        if (${fileInfo.condition}) {
+            <#if fileInfo.type == "static">
+            inputPath = new File(inputRootPath, "${fileInfo.inputPath}").getAbsolutePath();
+            outputPath = new File(outputRootPath, "${fileInfo.outputPath}").getAbsolutePath();
+            StaticGenerator.copyFilesByHutool(inputPath, outputPath);
+            <#else >
+            inputPath = new File(inputRootPath, "${fileInfo.inputPath}").getAbsolutePath();
+            outputPath = new File(outputRootPath, "${fileInfo.outputPath}").getAbsolutePath();
+            DynamicGenerator.doGenerate(inputPath, outputPath, model);
+            </#if>
+        }
+        <#else>
+        <#if fileInfo.type == "static">
+        inputPath = new File(inputRootPath, "${fileInfo.inputPath}").getAbsolutePath();
         outputPath = new File(outputRootPath, "${fileInfo.outputPath}").getAbsolutePath();
         StaticGenerator.copyFilesByHutool(inputPath, outputPath);
-    <#else >
+        <#else >
         inputPath = new File(inputRootPath, "${fileInfo.inputPath}").getAbsolutePath();
         outputPath = new File(outputRootPath, "${fileInfo.outputPath}").getAbsolutePath();
         DynamicGenerator.doGenerate(inputPath, outputPath, model);
-    </#if>
-</#list>
+        </#if>
+        </#if>
+    </#list>
     }
 }
