@@ -1,6 +1,5 @@
 package com.rookie.stack.cli;
 
-import com.rookie.stack.cli.command.CommandExecutor;
 import com.rookie.stack.cli.generator.main.MainGenerator;
 import freemarker.template.TemplateException;
 
